@@ -1,0 +1,81 @@
+body {
+    font-family:Arial, Helvetica, sans-serif
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    color: #4a4a4a;
+}
+
+.container > div {
+    font-size: 16px;
+    margin: 5px;
+    padding: 10px;
+    width: auto;
+    text-align: center;
+}
+
+.links {
+    position: relative;
+    left: 61%;
+}
+
+.links > a:link {
+    text-decoration: none;
+    color: #4a4a4a;
+}
+
+.links > a:hover {
+    text-decoration: underline;
+    color: #4a4a4a;
+}
+
+.links > a:visited {
+    color: #4a4a4a;
+}
+
+#google {
+    height: 350px;
+    
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    bottom: -195px;
+}
+
+#search {
+    text-align: center;
+}
+
+#urmom {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 15px;
+    margin-top: 45px;
+    border-width: 2px;
+    border-bottom-color: #8d8d8d;
+    border-top-color: #ffffff;
+    border-left-color: #ffffff;
+    border-right-color: #8d8d8d;
+    border-radius: 20px;
+    outline:none;
+}
+
+.urdad {
+    width: 150px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color:#4e4e4e;
+    border-color: #ffffff;
+    text-decoration: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    transform: none;
+}

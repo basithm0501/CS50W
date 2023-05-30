@@ -2,50 +2,8 @@
 <html lang="en">
     <head>
         <title>Google</title>
+        <link rel="stylesheet" href="style.css">
     </head>
-    <style>
-        body {
-            font-family:Arial, Helvetica, sans-serif
-        }
-
-        #search {
-            text-align: center;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            color: #4a4a4a;
-        }
-
-        .container > div {
-            font-size: 16px;
-            margin: 5px;
-            padding: 10px;
-            width: auto;
-            text-align: center;
-        }
-
-        .links {
-            position: relative;
-            left: 61%;
-        }
-
-        .links > a:link {
-            text-decoration: none;
-            color: #4a4a4a;
-        }
-
-        .links > a:hover {
-            text-decoration: underline;
-            color: #4a4a4a;
-        }
-
-        .links > a:visited {
-            color: #4a4a4a;
-        }
-
-    </style>
     <body>
 
         <div class="container">
@@ -55,15 +13,17 @@
             <div class="links"><a href="advanced.html">Google Advanced Search</a></div>
         </div>
         
-        <div>
-            
-
+        <div id="google">
+            <img class="center" src="resources/google.png" alt="Google" width=450>
         </div>
 
         <div id="search">
             <form action="https://google.com/search">
-                <input type="text" name="q">
-                <input type="submit" value="Google Search">
+                <input id="urmom" type="text" name="q">
+                <div>
+                    <input class="urdad" type="submit" value="Google Search">
+                    <input class="urdad" type="submit" name="btnI" value="I'm Feeling Lucky">
+                </div>
             </form>
         </div>
     </body>
