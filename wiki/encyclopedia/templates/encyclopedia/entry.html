@@ -10,13 +10,12 @@
     {% block body %}
 
         {% if topic in entries %}
-
-            <h1>{{ topic }} YESSIR!</h1>
-            {{ entries }}
+        
+            {{ content | safe }}
 
         {% else %}
 
-            <h1>Error 404: {{ topic }} not found.</h1>
+            <h1>Error 404: Wiki-page for "{{ topic }}" not found.</h1>
 
         {% endif %}
 
