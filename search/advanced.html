@@ -2,14 +2,39 @@
 <html lang="en">
     <head>
         <title>Google Advanced Search</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <form action="https://google.com/search">
-            <input type="text" name="as_q">
-            <input type="text" name="as_epq">
-            <input type="text" name="as_oq">
-            <input type="text" name="as_eq">
-            <input type="submit" value="Google Search">
-        </form>
+        <div class="container">
+            <div><img src="resources/google.png" alt="Google" width=100></div>
+            <div class="links"><a href="index.html">Google Search</a></div>
+            <div class="links"><a href="images.html">Google Images</a></div>
+        </div>
+
+        <h2>Advanced Search</h2>
+        <hr style="color:rgb(105, 104, 104);">
+        <br><br>
+        <div id="hehe"> 
+            Find pages with...
+        </div>
+        <div id="help">
+            <form action="https://google.com/search">
+                <div class="z">
+                    all these words: <input id="one" type="text" name="as_q">
+                </div>
+                <div class="z">
+                    this exact word or phrase: <input id="two" type="text" name="as_epq">
+                </div>
+                <div class="z">
+                    any of these words: <input id="three"type="text" name="as_oq">
+                </div>
+                <div class="z">
+                    none of these words: <input id="four" type="text" name="as_eq">
+                </div>
+                <input class="urbro" type="submit" value="Advanced Search">
+            </form>
+        </div>
+
+        
     </body>
 </html>

@@ -79,3 +79,73 @@ body {
     margin-top: 15px;
     transform: none;
 }
+
+.urbro {
+    width: 150px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: rgb(86, 137, 247);
+    color:white;
+    font-weight: 600;
+    border-color: #ffffff;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    position: relative;
+    left: 84%;
+}
+
+h2 {
+    color: rgb(216, 19, 19);
+    margin-left: 50px;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+#hehe {
+    margin-left: 50px;
+    font-size: 19px;
+    color: #313131;
+    font-weight:550;
+}
+
+#help {
+    display: block;
+    margin-left: 50px;
+    font-size: 14px;
+    color: #313131;
+    font-weight:500;
+}
+
+.z {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#one {
+    position: relative;
+    left: 90px;
+    padding: 5px;
+    width: 80%;
+}
+
+#two {
+    position: relative;
+    left: 27px;
+    padding: 5px;
+    width: 80%;
+}
+
+#three {
+    position: relative;
+    left: 66px;
+    padding: 5px;
+    width: 80%;
+}
+
+#four {
+    position: relative;
+    left: 57px;
+    padding: 5px;
+    width: 80%;
+}
