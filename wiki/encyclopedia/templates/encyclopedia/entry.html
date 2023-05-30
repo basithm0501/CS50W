@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+    {% block title %}
+        {% if topic in entries %}
+            {{ topic }}
+        {% else %}
+            Error 404!
+        {% endif %}
+    {% endblock %}
+
+    {% block body %}
+
+        {% if topic in entries %}
+
+            <h1>{{ topic }} YESSIR!</h1>
+            {{ entries }}
+
+        {% else %}
+
+            <h1>Error 404: {{ topic }} not found.</h1>
+
+        {% endif %}
+
+    {% endblock %}
