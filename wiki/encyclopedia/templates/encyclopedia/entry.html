@@ -8,15 +8,11 @@
     {% endblock %}
 
     {% block body %}
-
         {% if topic in entries %}
-        
-            {{ content | safe }}
-
+            {{content|safe}}
+            <br><br>
+            <a href="/edit/{{topic}}">Edit the wiki for {{topic}}</a>
         {% else %}
-
             <h1>Error 404: Wiki-page for "{{ topic }}" not found.</h1>
-
         {% endif %}
-
     {% endblock %}

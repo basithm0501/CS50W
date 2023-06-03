@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    <form action="/newpage/" method="POST">
+        {% csrf_token %}
+        {% if err %}
+            <label style="color: red">Error: Page already exists!</label> <br>
+        {% endif %}
+        <label>Enter page title</label>
+        <br>
+        <input name="title" type="text" value="title">
+        <br>
+        <label>Enter page contents</label>
+        <br>
+        <textarea name="content">Enter page content in MD syntax.</textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
