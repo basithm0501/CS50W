@@ -6,9 +6,12 @@
 
 {% block body %}
     <h1>Results</h1>
-
     <ul>
-        None
+        {% for result in results %}
+        <li><a href="/wiki/{{result}}">{{ result }}</a></li>
+        {% empty %}
+            <li>None</li>
+        {% endfor %}
     </ul>
 
 {% endblock %}
