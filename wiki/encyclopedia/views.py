@@ -23,6 +23,6 @@ def entry(request, topic):
         })
 
 def result(request):
-    return render(request, "encyclopedia/results.html"), {
+    return render(request, "encyclopedia/results.html", {
         "entries": util.list_entries()
-    }
+    })
