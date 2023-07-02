@@ -1,0 +1,116 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if message %}
+        <div class="alert alert-danger">
+            <strong>Invalid!</strong> {{message}}
+        </div>
+    {% endif %}
+    <div style="padding:20px" class="row">
+        <div class="col-lg-10" style="background:#e3e3e3; text-align:center;  border: 1px solid #333333;">
+            <h2>{{listing.title}}</h2>
+        </div>
+        <div class="col-lg-2">
+            {% if wlisted == True %}
+                <form action="{% url 'listing_page' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="bid" value="-WL">
+                    <input style="width:200px; height:50px;" class="btn btn-danger" type="submit" value="Remove from Watchlist">
+                </form>
+            {% elif wlisted == False %}
+                <form action="{% url 'listing_page' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="bid" value="WL">
+                    <input style="width:200px; height:50px;" class="btn btn-info" type="submit" value="Add to Watchlist">                    </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <div style="border: 1px solid #e3e3e3; padding: 10px"class="media">
+        <div class="media-body">
+            <p><i>Description: {{listing.description}}</i></p>  
+
+            <hr>
+
+            <h4>Details:</h4>
+                <ul>
+                    <li>Listed by <strong>{{listing.user}}</strong></li>
+                    <li>Category: {{category}} </li>
+                    {% if user == listing.user %}
+                        <li>
+                            <form action="{% url 'listing_page' listing.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="bid" value="END">
+                                <input style="height:25px; padding:0px;" class="btn btn-danger" type="submit" value="End this listing">
+                            </form>
+                        </li>
+                    {% endif %}
+                </ul>
+
+            <hr>
+
+            <h4>Price:</h4>
+                {% if listing.closed %}
+                    <h5>Lisitng Closed</h5>
+                    <h5>Sold for: ${{listing.highest_bid}}</h5>
+                    {% if user == high %}  
+                        <h5>You won this listing!</h5>
+                    {% endif %}        
+                {% else %}
+                    <h5>Starting Bid: ${{listing.starting_bid}}</h5>
+                    {% if listing.highest_bid == 0 %}
+                        <h5>Current Bid: None</h5>
+                    {% else %}
+                        <h5>Current Bid: ${{listing.highest_bid}}</h5>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                        {{num_bids}} bid(s) so far. 
+                        {% if not num_bids == 0%}
+                            {% if arebidder %} 
+                                Your bid is the current bid.
+                            {% else %}
+                                {{high}} made the current bid.
+                            {% endif %}
+                        {% endif %}
+
+                        <form action="{% url 'listing_page' listing.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input class="form-control" type="number" step=".01" name="bid" placeholder="Bid" >
+                            </div>
+                            <input class="btn btn-success" type="submit" value="Place Bid">
+                        </form>
+                    {% endif %}
+                {% endif %}
+        </div>
+        <div style="border: 1px solid #e3e3e3; padding: 10px" class="media-right">
+            <a href={% url "listing_page" listing.id %}>
+                <img src="{{listing.image}}" class="media-object" style="height:500px">
+            </a>
+        </div>
+    </div>
+    
+    <h4>Comments</h4>
+        {% if user.is_authenticated %}
+        <form id="commentfrm" action="{% url 'listing_page' listing.id %}" method="post">
+            {% csrf_token %}
+            <ul class="list-group">
+                <li class="list-group-item active">Write your own comment:</li>
+                <li class="list-group-item"> <textarea class="form-control" name="bid" form="commentfrm"></textarea></li>
+            </ul>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Post">
+        </form>
+        {% endif %}
+        <hr>
+            {% for comment in comments %}
+            <ul class="list-group">
+                <li class="list-group-item active"><strong>{{ comment.user }}</strong></li>
+                <li class="list-group-item">{{ comment.content}}</li>
+            </ul>
+            <br>
+            {% endfor %}
+        
+{% endblock %}

@@ -1,7 +1,62 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
 
-    TODO
+    {% if message %}
+    <h6>{{message}}</h6>
+    {% endif %}
+
+    <h2>Active Listings</h2>
+    {% for listing in listings %}
+        {% if not listing.closed%}
+            <div style="border: 1px solid #e3e3e3; padding: 10px"class="media">
+                <div class="media-body">
+                    <h3 class = "media-heading"><a style="color:black;" href={% url "listing_page" listing.id %}>{{listing.title}}</a></h3>
+                    <hr>
+                    <p>{{listing.description}}</p>
+                    {% if listing.highest_bid == 0 %}
+                        <h5><b>Price:</b> ${{listing.starting_bid}}</h5>
+                    {% else %}
+                        <h5><b>Price:</b> ${{listing.highest_bid}}</h5>
+                    {% endif %}
+                    
+                </div>
+                <div style="border: 1px solid #e3e3e3; padding: 10px" class="media-right">
+                    <a href={% url "listing_page" listing.id %}>
+                        <img src="{{listing.image}}" class="media-object" style="height:250px">
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    {% empty %}
+        <br>
+        <h5> There are no closed listings. Please come back again at a different time. </h5>
+    {% endfor %}
+    <br>
+    <h2>Closed Listings</h2>
+    {% for listing in listings %}
+        {% if listing.closed%}
+            <div style="border: 1px solid #e3e3e3; padding: 10px"class="media">
+                <div class="media-body">
+                    <h3 class = "media-heading"><a style="color:black;" href={% url "listing_page" listing.id %}>{{listing.title}}</a></h3>
+                    <hr>
+                    <p>{{listing.description}}</p>
+                    {% if listing.highest_bid == 0 %}
+                        <h5><b>Price:</b> ${{listing.starting_bid}}</h5>
+                    {% else %}
+                        <h5><b>Price:</b> ${{listing.highest_bid}}</h5>
+                    {% endif %}
+                    
+                </div>
+                <div style="border: 1px solid #e3e3e3; padding: 10px" class="media-right">
+                    <a href={% url "listing_page" listing.id %}>
+                        <img src="{{listing.image}}" class="media-object" style="height:250px">
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    {% empty %}
+        <br>
+        <h5> There are no active listings. Please come back again at a different time. </h5>
+    {% endfor %}
 {% endblock %}

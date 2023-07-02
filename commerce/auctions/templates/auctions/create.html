@@ -1,0 +1,56 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2>Create Listing</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form id="createfrm" action="{% url 'create' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="title" placeholder="Listing Title">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" rows="10" name="description" form="createfrm">Description</textarea>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="number" step=".01" name="starting_bid" placeholder="Starting Bid" >
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="category">
+                <option>-Select Category-</option>
+                <option value="ATC">Arts & Crafts</option>
+                <option value="ATM">Automotive</option>
+                <option value="BAB">Baby</option>
+                <option value="BPC">Beauty & Personal Care</option>
+                <option value="BOK">Books</option>
+                <option value="CMP">Computers</option>
+                <option value="ELE">Electronics</option>
+                <option value="WMN">Women's Fashion</option>
+                <option value="MEN">Men's Fashion</option>
+                <option value="GRL">Girls' Fashion</option>
+                <option value="BOY">Boys' Fashion</option>
+                <option value="HNH">Health & Household</option>
+                <option value="HNK">Home & Kitchen</option>
+                <option value="INS">Industrial & Scientific</option>
+                <option value="LGG">Luggage</option>
+                <option value="MNT">Movies & Television</option>
+                <option value="MCV">Music, CDs & Vinyl</option>
+                <option value="PSS">Pet Supplies</option>
+                <option value="SFW">Software</option>
+                <option value="SNO">Sports & Outdoors</option>
+                <option value="THI">Tools & Home Improvement</option>
+                <option value="TNG">Toys & Games</option>
+                <option value="VDG">Video Games</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="url" name="image" placeholder="Image URL">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Post Listing">
+    </form>
+
+{% endblock %}
